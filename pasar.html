@@ -7,7 +7,7 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">1 Utama</li>
+          <li class="breadcrumb-item active">Pasar</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -47,93 +47,6 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="card card-danger">
-          <div class="card-header">
-            <h3 class="card-title">Total Visitors</h3>
-          </div>
-          <div class="card-body">
-            <canvas id="totalVisitors" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-          </div>
-          <!-- /.card-body -->
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card card-success">
-          <div class="card-header">
-            <h3 class="card-title">Total Visitor Monthly</h3>
-          </div>
-          <div class="card-body">
-            <div class="chart">
-              <canvas id="totalVisitorsMonth" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-            </div>
-          </div>
-          <!-- /.card-body -->
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card card-info">
-          <div class="card-header border-0">
-            <div class="d-flex justify-content-between">
-              <h3 class="card-title">Passing By Traffic VS In-Store Traffic (Ground - Daily)</h3>
-              <a href="javascript:void(0);">View Report</a>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="position-relative mb-4">
-              <canvas id="passedInGround" height="200"></canvas>
-            </div>
-            <div class="d-flex flex-row justify-content-end">
-              <span class="mr-2"><i class="fas fa-square" style="color: #f4a522"></i> In</span>
-              <span><i class="fas fa-square" style="color: #6092cd;"></i> Passing By</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card card-danger">
-          <div class="card-header">
-            <h3 class="card-title">Passing By Traffic VS In-Store Traffic Pie Chart (Ground Floor - Daily)</h3>
-          </div>
-          <div class="card-body">
-            <canvas id="passedInGroundPie" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-          </div>
-          <!-- /.card-body -->
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card card-info">
-          <div class="card-header border-0">
-            <div class="d-flex justify-content-between">
-              <h3 class="card-title">Passing By Traffic VS In-Store Traffic (Level 1 - Daily)</h3>
-              <a href="javascript:void(0);">View Report</a>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="position-relative mb-4">
-              <canvas id="passedInLvl1" height="200"></canvas>
-            </div>
-            <div class="d-flex flex-row justify-content-end">
-              <span class="mr-2"><i class="fas fa-square" style="color: #f4a522"></i> In</span>
-              <span><i class="fas fa-square" style="color: #6092cd;"></i> Passing By</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card card-danger">
-          <div class="card-header">
-            <h3 class="card-title">Passing By Traffic VS In-Store Traffic Pie Chart (Level 1 - Daily)</h3>
-          </div>
-          <div class="card-body">
-            <canvas id="passedInLvl1Pie" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-          </div>
-          <!-- /.card-body -->
-        </div>
-      </div>
-      <!-- /.col-md-6 -->
-    </div>
     <!-- /.row -->
   </div>
   <!-- /.container-fluid -->
@@ -142,7 +55,7 @@
 
 <script>
 $(function () {
-  var areaChartOptions = {
+  /*var areaChartOptions = {
     maintainAspectRatio : false,
     responsive : true,
     legend: {
@@ -236,7 +149,7 @@ $(function () {
         data                : [0, 0, 0, 0, 0, 0, 0]
       }
     ]
-  }
+  }*/
 
   //Date range as a button
   $('#daterange-btn').daterangepicker(
@@ -256,11 +169,11 @@ $(function () {
       var startFormatted = formatDate(start) + " 00:00:00";
       var endFormatted = formatDate(end) + " 23:59:59";
       
-      $.post('php/get1utama.php', {startDate: startFormatted, endDate: endFormatted}, function(data){
+      $.post('php/getpasar.php', {startDate: startFormatted, endDate: endFormatted}, function(data){
         var obj = JSON.parse(data);
 
         if(obj.status === 'success'){
-          removeData(totalVisitorsChart);
+          /*removeData(totalVisitorsChart);
           addData(totalVisitorsChart, 'Ground', obj.groundTotalCount);
           addData(totalVisitorsChart, 'Level 1', obj.lvl1TotalCount);
 
@@ -280,7 +193,7 @@ $(function () {
             addLineChartData(barChart, obj.message[i].Date, obj.message[i].TotalGroundCount, obj.message[i].TotalLvl1Count);
             addLineChartData(lineChart, obj.message[i].Date, obj.message[i].InStoreGroundCount, obj.message[i].PassingGroundCount);
             addLineChartData(lineChart2, obj.message[i].Date, obj.message[i].InStoreLvl1Count, obj.message[i].PassingLvl1Count);
-          }
+          }*/
           
         }
         else if(obj.status === 'failed'){
@@ -297,7 +210,7 @@ $(function () {
   //- DONUT CHART -
   //-------------
   // Get context with jQuery - using jQuery's .get() method.
-  var donutChartCanvas = $('#totalVisitors').get(0).getContext('2d')
+  /*var donutChartCanvas = $('#totalVisitors').get(0).getContext('2d')
   var donutData        = {
     labels: [
         'Ground',
@@ -425,13 +338,13 @@ $(function () {
     type: 'line',
     data: lineChartData2,
     options: lineChartOptions2
-  })
+  })*/
 
-  $.post('php/get1utama.php', {startDate: formatDate(moment().subtract(29, 'days')) + " 00:00:00", endDate: formatDate(formatDate(moment()) + " 00:00:00") + " 23:59:59"}, function(data){
+  $.post('php/getpasar.php', {startDate: formatDate(moment().subtract(29, 'days')) + " 00:00:00", endDate: formatDate(formatDate(moment()) + " 00:00:00") + " 23:59:59"}, function(data){
     var obj = JSON.parse(data);
 
     if(obj.status === 'success'){
-      removeData(totalVisitorsChart);
+      /*removeData(totalVisitorsChart);
       addData(totalVisitorsChart, 'Ground', obj.groundTotalCount);
       addData(totalVisitorsChart, 'Level 1', obj.lvl1TotalCount);
 
@@ -451,7 +364,7 @@ $(function () {
         addLineChartData(barChart, obj.message[i].Date, obj.message[i].TotalGroundCount, obj.message[i].TotalLvl1Count);
         addLineChartData(lineChart, obj.message[i].Date, obj.message[i].InStoreGroundCount, obj.message[i].PassingGroundCount);
         addLineChartData(lineChart2, obj.message[i].Date, obj.message[i].InStoreLvl1Count, obj.message[i].PassingLvl1Count);
-      }
+      }*/
       
     }
     else if(obj.status === 'failed'){

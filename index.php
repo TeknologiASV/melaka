@@ -135,9 +135,6 @@ if(!isset($_SESSION['userID'])){
 <script src="plugins/toastr/toastr.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard3.js"></script>
-<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-<script src="plugins/heatmap/build/heatmap.js"></script>
-<script src="plugins/heatmap/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
 <script>
 $(function () {
   toastr.options = {
