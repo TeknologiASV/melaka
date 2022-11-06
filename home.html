@@ -49,90 +49,67 @@
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <div class="card card-danger">
-          <div class="card-header">
-            <h3 class="card-title">Total Visitors</h3>
-          </div>
-          <div class="card-body">
-            <canvas id="totalVisitors" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-          </div>
-          <!-- /.card-body -->
-        </div>
-      </div>
-      <div class="col-lg-6">
         <div class="card card-success">
           <div class="card-header">
-            <h3 class="card-title">Total Visitor Monthly</h3>
+            <h3 class="card-title">Total Visitors By Entrance</h3>
           </div>
           <div class="card-body">
             <div class="chart">
               <canvas id="totalVisitorsMonth" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
             </div>
           </div>
-          <!-- /.card-body -->
         </div>
       </div>
-      <div class="col-lg-6">
-        <div class="card card-info">
-          <div class="card-header border-0">
-            <div class="d-flex justify-content-between">
-              <h3 class="card-title">Passing By Traffic VS In-Store Traffic (Ground - Daily)</h3>
-              <a href="javascript:void(0);">View Report</a>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="position-relative mb-4">
-              <canvas id="passedInGround" height="200"></canvas>
-            </div>
-            <div class="d-flex flex-row justify-content-end">
-              <span class="mr-2"><i class="fas fa-square" style="color: #f4a522"></i> In</span>
-              <span><i class="fas fa-square" style="color: #6092cd;"></i> Passing By</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Passing By Traffic VS In-Store Traffic Pie Chart (Ground Floor - Daily)</h3>
+            <h3 class="card-title">Total Visitors By Entrance (Weekly)</h3>
           </div>
           <div class="card-body">
-            <canvas id="passedInGroundPie" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-          </div>
-          <!-- /.card-body -->
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card card-info">
-          <div class="card-header border-0">
-            <div class="d-flex justify-content-between">
-              <h3 class="card-title">Passing By Traffic VS In-Store Traffic (Level 1 - Daily)</h3>
-              <a href="javascript:void(0);">View Report</a>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="position-relative mb-4">
-              <canvas id="passedInLvl1" height="200"></canvas>
-            </div>
-            <div class="d-flex flex-row justify-content-end">
-              <span class="mr-2"><i class="fas fa-square" style="color: #f4a522"></i> In</span>
-              <span><i class="fas fa-square" style="color: #6092cd;"></i> Passing By</span>
-            </div>
+            <canvas id="totalVisitors" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
-        <div class="card card-danger">
-          <div class="card-header">
-            <h3 class="card-title">Passing By Traffic VS In-Store Traffic Pie Chart (Level 1 - Daily)</h3>
+      <div class="col-lg-8">
+        <div class="row">
+          <div class="col-4">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Entrance 1</h3></div>
+              <div class="card-body" id="entrance1"></div>
+            </div>
           </div>
-          <div class="card-body">
-            <canvas id="passedInLvl1Pie" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Entrance 2</h3></div>
+              <div class="card-body" id="entrance2"></div>
+            </div>
           </div>
-          <!-- /.card-body -->
+          <div class="col-4">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Entrance 3</h3></div>
+              <div class="card-body" id="entrance3"></div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Entrance 4</h3></div>
+              <div class="card-body" id="entrance4"></div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Entrance 5</h3></div>
+              <div class="card-body" id="entrance5"></div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Entrance 6</h3></div>
+              <div class="card-body" id="entrance6"></div>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- /.col-md-6 -->
     </div>
     <!-- /.row -->
   </div>
@@ -153,8 +130,8 @@ $(function () {
         'This Month'  : [moment().startOf('month'), moment().endOf('month')],
         'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
       },
-      startDate: moment().subtract(1, 'days'),
-      endDate  : moment().subtract(1, 'days')
+      startDate: moment().subtract(6, 'days'),
+      endDate  : moment()
     },
     function (start, end) {
       var startFormatted = formatDate(start) + " 00:00:00";
@@ -165,18 +142,24 @@ $(function () {
 
         if(obj.status === 'success'){
           removeData(totalVisitorsChart);
-          addData(totalVisitorsChart, '1 Utama', obj.oneUtamaCount);
-          addData(totalVisitorsChart, 'Damansara', obj.damansaraCount);
-          $('#salesInfo').html(obj.oneUtamaCount);
-          $('#purchaseInfo').html(obj.damansaraCount);
-          $('#salesInfoPerc').html(parseFloat((100/obj.oneUtamaCount) * 100).toFixed(2));
-          $('#salesInfoPerc2').html(parseFloat((50/obj.damansaraCount) * 100).toFixed(2));
+          addData(totalVisitorsChart, 'Entrance 1', obj.ent1Count);
+          addData(totalVisitorsChart, 'Entrance 2', obj.ent2Count);
+          addData(totalVisitorsChart, 'Entrance 3', obj.ent3Count);
+          addData(totalVisitorsChart, 'Entrance 4', obj.ent4Count);
+          addData(totalVisitorsChart, 'Entrance 5', obj.ent5Count);
+          addData(totalVisitorsChart, 'Entrance 6', obj.ent6Count);
+          $('#entrance1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
+          $('#entrance2').html('<p><span style="font-size: 25px;">'+obj.ent2Count+'</span><br>Visitors'+'</p>');
+          $('#entrance3').html('<p><span style="font-size: 25px;">'+obj.ent3Count+'</span><br>Visitors'+'</p>');
+          $('#entrance4').html('<p><span style="font-size: 25px;">'+obj.ent4Count+'</span><br>Visitors'+'</p>');
+          $('#entrance5').html('<p><span style="font-size: 25px;">'+obj.ent5Count+'</span><br>Visitors'+'</p>');
+          $('#entrance6').html('<p><span style="font-size: 25px;">'+obj.ent6Count+'</span><br>Visitors'+'</p>');
 
-          /*removeData(barChart);
+          removeData(stackChart);
 
           for(var i=0; i<obj.message.length; i++){
-            addBarChartData(barChart, obj.message[i].Date, obj.message[i].TotalGroundCount, obj.message[i].TotalLvl1Count);
-          }*/
+            addStackChartData(stackChart, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent2Count, obj.message[i].ent3Count, obj.message[i].ent4Count, obj.message[i].ent5Count, obj.message[i].ent6Count);
+          }
         }
         else if(obj.status === 'failed'){
           toastr["error"](obj.message, "Failed:");
@@ -285,30 +268,36 @@ $(function () {
     datasets: [
       {
         data: [0,0,0,0,0,0],
-        backgroundColor : ['#f4a522', '#6092cd'],
+        backgroundColor : ['#f4a522', '#6092cd', '#61b546', '#aa4498', '#dccc77', '#89dcf0'],
       }
     ]
   }
   var donutOptions = {maintainAspectRatio : false, responsive : true}
   var totalVisitorsChart = new Chart(donutChartCanvas, {type: 'doughnut', data: donutData, options: donutOptions});
   
-  $.post('php/getjonker.php', {startDate: formatDate(moment().subtract(1, 'days')) + " 00:00:00", endDate: formatDate(moment().subtract(1, 'days')) + " 23:59:59"}, function(data){
+  $.post('php/getjonker.php', {startDate: formatDate(moment().subtract(6, 'days')) + " 00:00:00", endDate: formatDate(moment()) + " 23:59:59"}, function(data){
     var obj = JSON.parse(data);
 
     if(obj.status === 'success'){
       removeData(totalVisitorsChart);
-      addData(totalVisitorsChart, '1 Utama', obj.oneUtamaCount);
-      addData(totalVisitorsChart, 'Damansara', obj.damansaraCount);
-      $('#salesInfo').html(obj.oneUtamaCount);
-      $('#purchaseInfo').html(obj.damansaraCount);
-      $('#salesInfoPerc').html(parseFloat((100/obj.oneUtamaCount) * 100).toFixed(2));
-      $('#salesInfoPerc2').html(parseFloat((50/obj.damansaraCount) * 100).toFixed(2));
+      addData(totalVisitorsChart, 'Entrance 1', obj.ent1Count);
+      addData(totalVisitorsChart, 'Entrance 2', obj.ent2Count);
+      addData(totalVisitorsChart, 'Entrance 3', obj.ent3Count);
+      addData(totalVisitorsChart, 'Entrance 4', obj.ent4Count);
+      addData(totalVisitorsChart, 'Entrance 5', obj.ent5Count);
+      addData(totalVisitorsChart, 'Entrance 6', obj.ent6Count);
+      $('#entrance1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
+      $('#entrance2').html('<p><span style="font-size: 25px;">'+obj.ent2Count+'</span><br>Visitors'+'</p>');
+      $('#entrance3').html('<p><span style="font-size: 25px;">'+obj.ent3Count+'</span><br>Visitors'+'</p>');
+      $('#entrance4').html('<p><span style="font-size: 25px;">'+obj.ent4Count+'</span><br>Visitors'+'</p>');
+      $('#entrance5').html('<p><span style="font-size: 25px;">'+obj.ent5Count+'</span><br>Visitors'+'</p>');
+      $('#entrance6').html('<p><span style="font-size: 25px;">'+obj.ent6Count+'</span><br>Visitors'+'</p>');
 
-      /*removeData(barChart);
+      removeData(stackChart);
 
       for(var i=0; i<obj.message.length; i++){
-        addLineChartData(barChart, obj.message[i].Date, obj.message[i].TotalGroundCount, obj.message[i].TotalLvl1Count);
-      }*/
+        addStackChartData(stackChart, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent2Count, obj.message[i].ent3Count, obj.message[i].ent4Count, obj.message[i].ent5Count, obj.message[i].ent6Count);
+      }
     }
     else if(obj.status === 'failed'){
       toastr["error"](obj.message, "Failed:");
