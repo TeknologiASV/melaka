@@ -8,7 +8,7 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
     $endDate = filter_input(INPUT_POST, 'endDate', FILTER_SANITIZE_STRING);
     $location = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_STRING);
 
-    if ($select_stmt = $db->prepare("SELECT * FROM Melaka_traffic WHERE Date>=? AND Date<=? ORDER BY Date")) {
+    if ($select_stmt = $db->prepare("SELECT * FROM uniqlo_1u WHERE Date>=? AND Date<=? ORDER BY Date")) {
         $select_stmt->bind_param('ss', $startDate, $endDate);
         
         // Execute the prepared query.
@@ -39,7 +39,9 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                         'ent3Count' => 0,
                         'ent4Count' => 0,
                         'ent5Count' => 0,
-                        'ent6Count' => 0
+                        'ent6Count' => 0,
+                        'veh2Count' => 0,
+                        'veh7Count' => 0
                     );
 
                     array_push($dateBar, substr($row['Date'], 0, 10));
@@ -47,8 +49,8 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
 
                 $key = array_search(substr($row['Date'], 0, 10), $dateBar);
 
-                if($row['Place'] == 'Jonker'){
-                    if($row['Condition'] == 'PPL-in'){
+                if($row['Mode'] == 'Jonker'){
+                    if($row['Door'] == 'PPL-in'){
                         if($row['Device'] == 'jp1'){
                             $message[$key]['ent1Count'] += (int)$row['Count'];
                             $ent1Count += (int)$row['Count'];
@@ -74,12 +76,12 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                             $ent6Count += (int)$row['Count'];
                         }
                     }
-                    else if($row['Condition'] == 'VTL-in'){
+                    else if($row['Door'] == 'VCL-in'){
                         if($row['Device'] == 'jp2'){
-
+                            $message[$key]['veh2Count'] += (int)$row['Count'];
                         }
                         else if($row['Device'] == 'jp7'){
-
+                            $message[$key]['veh7Count'] += (int)$row['Count'];
                         }
                     }
                 }
@@ -95,7 +97,6 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                     "ent4Count" => $ent4Count,
                     "ent5Count" => $ent5Count,
                     "ent6Count" => $ent6Count,
-                    "query" => "SELECT * FROM Melaka_traffic WHERE Date>=".$startDate." AND Date<=".$endDate." ORDER BY Date"
                 ));   
         }
     }
