@@ -77,7 +77,7 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                         }
                     }
                     else if($row['Door'] == 'VCL-in'){
-                        if($row['Device'] == 'jp2'){
+                        if($row['Device'] == 'jp1'){
                             $message[$key]['veh2Count'] += (int)$row['Count'];
                         }
                         else if($row['Device'] == 'jp7'){
@@ -85,6 +85,14 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                         }
                     }
                 }
+            }
+
+            if($ent3Count <= 0){
+                $ent3Count = round($ent2Count * 0.75);
+            }
+
+            if($ent5Count <= 0){
+                $ent5Count = round($ent4Count * 0.85);
             }
             
             echo json_encode(
