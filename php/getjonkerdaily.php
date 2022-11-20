@@ -31,9 +31,9 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
             $ent6Count = 0;
             
             while ($row = $result->fetch_assoc()) {
-                if(!in_array(substr($row['Date'], 0, 10), $dateBar)){
+                if(!in_array(substr($row['Date'], 10, 3), $dateBar)){
                     $message[] = array( 
-                        'Date' => substr($row['Date'], 0, 10),
+                        'Date' => substr($row['Date'], 10, 3).":00",
                         'ent1Count' => 0,
                         'ent2Count' => 0,
                         'ent3Count' => 0,
@@ -44,10 +44,10 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                         'veh7Count' => 0
                     );
 
-                    array_push($dateBar, substr($row['Date'], 0, 10));
+                    array_push($dateBar, substr($row['Date'], 10, 3));
                 }
 
-                $key = array_search(substr($row['Date'], 0, 10), $dateBar);
+                $key = array_search(substr($row['Date'], 10, 3), $dateBar);
 
                 if($row['Mode'] == 'Jonker'){
                     if($row['Door'] == 'PPL-in'){

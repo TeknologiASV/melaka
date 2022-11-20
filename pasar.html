@@ -120,7 +120,6 @@
                 </div>
               </div>
             </div>
-            
           </div>
         </div>
       </div>
@@ -243,7 +242,7 @@ $(function () {
         reservationtime = $('#reservationtime').val() ? $('#reservationtime').val() + ':00' : '00:00:00',
         endtime = $('#endtime').val() ? $('#endtime').val() + ':59' : '23:59:59';
 
-    $.post('php/getpasar.php', {startDate: reservationdate + " " + reservationtime, endDate: reservationdate + " " + endtime}, function(data){
+    $.post('php/getpasardaily.php', {startDate: reservationdate + " " + reservationtime, endDate: reservationdate + " " + endtime}, function(data){
       var obj = JSON.parse(data);
 
       if(obj.status === 'success'){
@@ -270,6 +269,24 @@ $(function () {
 
       for(var i=0; i<obj.message.length; i++){
         addBarChartData(stackChart2, obj.message[i].Date, obj.message[i].ent1Count);
+      }
+    }
+    else if(obj.status === 'failed'){
+      toastr["error"](obj.message, "Failed:");
+    }
+    else{
+      toastr["error"]("Something wrong when geting data", "Failed:");
+    }
+  });
+
+  $.post('php/getpasardaily.php', {startDate: $('#reservationdate').val() + " " + $('#reservationtime').val() + ':00', endDate: $('#reservationdate').val() + " " + $('#endtime').val() + ':59'}, function(data){
+    var obj = JSON.parse(data);
+
+    if(obj.status === 'success'){
+      removeData(stackChart);
+
+      for(var i=0; i<obj.message.length; i++){
+        addBarChartData(stackChart, obj.message[i].Date, obj.message[i].ent1Count);
       }
     }
     else if(obj.status === 'failed'){
