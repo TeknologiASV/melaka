@@ -105,7 +105,7 @@
                       </div>
                       <div class="col-4">
                         <div class="card">
-                          <div class="card-header"><h3 class="card-title">Jalan Hang Jebat (Archay)</h3></div>
+                          <div class="card-header"><h3 class="card-title">Jalan Hang Jebat (Stage)</h3></div>
                           <div class="card-body" id="entrance6"></div>
                         </div>
                       </div>
@@ -217,7 +217,7 @@
                       </div>
                       <div class="col-4">
                         <div class="card">
-                          <div class="card-header"><h3 class="card-title">Jalan Hang Jebat (Archay)</h3></div>
+                          <div class="card-header"><h3 class="card-title">Jalan Hang Jebat (Stage)</h3></div>
                           <div class="card-body" id="entrancedaily6"></div>
                         </div>
                       </div>
@@ -366,7 +366,7 @@ $(function () {
         data                : [0, 0, 0, 0, 0, 0, 0]
       },
       {
-        label               : 'Jalan Hang Jebat (Archay)',
+        label               : 'Jalan Hang Jebat (Stage)',
         backgroundColor     : 'rgba(137, 220, 240, 1)',
         borderColor         : 'rgba(137, 220, 240, 1)',
         pointRadius         : false,
@@ -407,7 +407,7 @@ $(function () {
         data                : [0, 0, 0, 0, 0, 0, 0]
       },
       {
-        label               : 'Jalan Hang Jebat (Archay)',
+        label               : 'Jalan Hang Jebat (Stage)',
         backgroundColor     : 'rgba(96, 146, 205, 1)',
         borderColor         : 'rgba(96, 146, 205, 1)',
         pointRadius         : false,
@@ -492,7 +492,7 @@ $(function () {
         data                : [0, 0, 0, 0, 0, 0, 0]
       },
       {
-        label               : 'Jalan Hang Jebat (Archay)',
+        label               : 'Jalan Hang Jebat (Stage)',
         backgroundColor     : 'rgba(137, 220, 240, 1)',
         borderColor         : 'rgba(137, 220, 240, 1)',
         pointRadius         : false,
@@ -533,7 +533,7 @@ $(function () {
         data                : [0, 0, 0, 0, 0, 0, 0]
       },
       {
-        label               : 'Jalan Hang Jebat (Archay)',
+        label               : 'Jalan Hang Jebat (Stage)',
         backgroundColor     : 'rgba(96, 146, 205, 1)',
         borderColor         : 'rgba(96, 146, 205, 1)',
         pointRadius         : false,
@@ -565,7 +565,7 @@ $(function () {
   // Get context with jQuery - using jQuery's .get() method.
   var donutChartCanvas = $('#totalVisitors').get(0).getContext('2d');
   var donutData        = {
-    labels: ['Jalan Hand Jebat (Roundabout)', 'Jalan Hang Kasturi (Right)', 'Jalan Hang Kasturi (Left)', 'Jalan Hang Lekiu', 'Jalan Hang Lekir', 'Jalan Hang Jebat (Archay)'],
+    labels: ['Jalan Hand Jebat (Roundabout)', 'Jalan Hang Kasturi (Right)', 'Jalan Hang Kasturi (Left)', 'Jalan Hang Lekiu', 'Jalan Hang Lekir', 'Jalan Hang Jebat (Stage)'],
     datasets: [
       {
         data: [0,0,0,0,0,0],
@@ -578,7 +578,7 @@ $(function () {
 
   var donutChartCanvas2 = $('#totalVisitorDailyPie').get(0).getContext('2d');
   var donutData2        = {
-    labels: ['Jalan Hand Jebat (Roundabout)', 'Jalan Hang Kasturi (Right)', 'Jalan Hang Kasturi (Left)', 'Jalan Hang Lekiu', 'Jalan Hang Lekir', 'Jalan Hang Jebat (Archay)'],
+    labels: ['Jalan Hand Jebat (Roundabout)', 'Jalan Hang Kasturi (Right)', 'Jalan Hang Kasturi (Left)', 'Jalan Hang Lekiu', 'Jalan Hang Lekir', 'Jalan Hang Jebat (Stage)'],
     datasets: [
       {
         data: [0,0,0,0,0,0],
@@ -608,7 +608,7 @@ $(function () {
         addData(totalVisitorsChart2, 'Jalan Hang Kasturi (Left)', obj.ent3Count);
         addData(totalVisitorsChart2, 'Jalan Hang Lekiu', obj.ent4Count);
         addData(totalVisitorsChart2, 'Jalan Hang Lekir', obj.ent5Count);
-        addData(totalVisitorsChart2, 'Jalan Hang Jebat (Archay)', obj.ent6Count);
+        addData(totalVisitorsChart2, 'Jalan Hang Jebat (Stage)', obj.ent6Count);
         $('#entrancedaily1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
         $('#entrancedaily2').html('<p><span style="font-size: 25px;">'+obj.ent2Count+'</span><br>Visitors'+'</p>');
         $('#entrancedaily3').html('<p><span style="font-size: 25px;">'+obj.ent3Count+'</span><br>Visitors'+'</p>');
@@ -643,7 +643,7 @@ $(function () {
       addData(totalVisitorsChart, 'Jalan Hang Kasturi (Left)', obj.ent3Count);
       addData(totalVisitorsChart, 'Jalan Hang Lekiu', obj.ent4Count);
       addData(totalVisitorsChart, 'Jalan Hang Lekir', obj.ent5Count);
-      addData(totalVisitorsChart, 'Jalan Hang Jebat (Archay)', obj.ent6Count);
+      addData(totalVisitorsChart, 'Jalan Hang Jebat (Stage)', obj.ent6Count);
       $('#entrance1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
       $('#entrance2').html('<p><span style="font-size: 25px;">'+obj.ent2Count+'</span><br>Visitors'+'</p>');
       $('#entrance3').html('<p><span style="font-size: 25px;">'+obj.ent3Count+'</span><br>Visitors'+'</p>');
@@ -677,7 +677,7 @@ $(function () {
       addData(totalVisitorsChart2, 'Jalan Hang Kasturi (Left)', obj.ent3Count);
       addData(totalVisitorsChart2, 'Jalan Hang Lekiu', obj.ent4Count);
       addData(totalVisitorsChart2, 'Jalan Hang Lekir', obj.ent5Count);
-      addData(totalVisitorsChart2, 'Jalan Hang Jebat (Archay)', obj.ent6Count);
+      addData(totalVisitorsChart2, 'Jalan Hang Jebat (Stage)', obj.ent6Count);
       $('#entrancedaily1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
       $('#entrancedaily2').html('<p><span style="font-size: 25px;">'+obj.ent2Count+'</span><br>Visitors'+'</p>');
       $('#entrancedaily3').html('<p><span style="font-size: 25px;">'+obj.ent3Count+'</span><br>Visitors'+'</p>');

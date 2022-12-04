@@ -62,9 +62,9 @@ if(!isset($_SESSION['userID'])){
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <!--img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"-->
-      <span class="brand-text font-weight-light">MBSB</span>
+    <a href="#" class="brand-link logo-switch">
+      <img src="images/logo.png" alt="Melaka Logo" class="brand-image-xl logo-xs" style="left: 10%;width: 70%;max-height: 100%;">
+      <img src="images/logoBig.png" alt="Melaka Logo" class="brand-image-xl logo-xl" style="left: 10%;width: 70%;top: 0px;max-height: 100%;">
     </a>
 
     <!-- Sidebar -->
