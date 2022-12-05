@@ -8,7 +8,7 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
     $endDate = filter_input(INPUT_POST, 'endDate', FILTER_SANITIZE_STRING);
     $location = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_STRING);
 
-    if ($select_stmt = $db->prepare("SELECT * FROM uniqlo_1u WHERE Date>=? AND Date<=? ORDER BY Date")) {
+    if ($select_stmt = $db->prepare("SELECT * FROM Melaka_traffic WHERE Date>=? AND Date<=? ORDER BY Date")) {
         $select_stmt->bind_param('ss', $startDate, $endDate);
         
         // Execute the prepared query.
@@ -49,8 +49,8 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
 
                 $key = array_search(substr($row['Date'], 10, 3), $dateBar);
 
-                if($row['Mode'] == 'Jonker'){
-                    if($row['Door'] == 'PPL-in'){
+                if($row['Place'] == 'Jonker'){
+                    if($row['Condition'] == 'PPL-in'){
                         if($row['Device'] == 'jp1'){
                             $message[$key]['ent1Count'] += (int)$row['Count'];
                             $ent1Count += (int)$row['Count'];
@@ -76,7 +76,7 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                             $ent6Count += (int)$row['Count'];
                         }
                     }
-                    else if($row['Door'] == 'VCL-in'){
+                    else if($row['Condition'] == 'VCL-in'){
                         if($row['Device'] == 'jp1'){
                             $message[$key]['veh2Count'] += (int)$row['Count'];
                         }
