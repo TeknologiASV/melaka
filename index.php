@@ -60,11 +60,11 @@ if(!isset($_SESSION['userID'])){
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: white;">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link logo-switch">
+    <a href="#" class="brand-link logo-switch" style="line-height: 2.5;">
       <img src="images/logo.png" alt="Melaka Logo" class="brand-image-xl logo-xs" style="left: 10%;width: 70%;max-height: 100%;">
-      <img src="images/logoBig.png" alt="Melaka Logo" class="brand-image-xl logo-xl" style="left: 10%;width: 70%;top: 0px;max-height: 100%;">
+      <img src="images/logoBig.png" alt="Melaka Logo" class="brand-image-xl logo-xl" style="left: 10%;width: 80%;top: 0px;max-height: 100%;">
     </a>
 
     <!-- Sidebar -->
@@ -75,19 +75,19 @@ if(!isset($_SESSION['userID'])){
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#home" data-file="home.html" class="nav-link link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="#home" data-file="home.html" class="nav-link link" style="color: black;">
+              <i class="nav-icon fas fa-road"></i>
               <p>Jonker Street</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#pasar" data-file="pasar.html" class="nav-link link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="#pasar" data-file="pasar.html" class="nav-link link" style="color: black;">
+              <i class="nav-icon fas fa-shopping-cart"></i>
               <p>Pasar Melaka</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="php/logout.php" class="nav-link">
+            <a href="php/logout.php" class="nav-link link" style="color: black;">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>Logout</p>
             </a>
