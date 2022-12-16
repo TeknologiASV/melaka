@@ -54,6 +54,9 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                         if($row['Device'] == 'jp1'){
                             $message[$key]['ent1Count'] += (int)$row['Count'];
                             $ent1Count += (int)$row['Count'];
+
+                            $message[$key]['ent6Count'] += ceil((int)$row['Count'] * 0.8);
+                            $ent6Count += ceil((int)$row['Count'] * 0.8);
                         }
                         else if($row['Device'] == 'jp3'){
                             $message[$key]['ent2Count'] += (int)$row['Count'];
