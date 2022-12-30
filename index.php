@@ -92,6 +92,28 @@ if(!isset($_SESSION['userID'])){
               <p>Logout</p>
             </a>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link" style="color: black;">
+              <i class="nav-icon fas fa-cogs"></i>
+              <p>Settings<i class="fas fa-angle-left right"></i></p>
+            </a>
+        
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="#myprofile" data-file="myprofile.php" class="nav-link link" style="color: black;"> 
+                  <i class="nav-icon fas fa-id-badge"></i>
+                  <p>Profile</p>
+                </a>
+              </li>
+          
+              <li class="nav-item">
+                <a href="#changepassword" data-file="changePassword.html" class="nav-link link" style="color: black;">
+                  <i class="nav-icon fas fa-key"></i>
+                  <p>Change Password</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
