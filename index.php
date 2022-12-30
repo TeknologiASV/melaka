@@ -86,12 +86,6 @@ if(!isset($_SESSION['userID'])){
               <p>Pasar Melaka</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="php/logout.php" class="nav-link link" style="color: black;">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>Logout</p>
-            </a>
-          </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link" style="color: black;">
               <i class="nav-icon fas fa-cogs"></i>
@@ -113,6 +107,12 @@ if(!isset($_SESSION['userID'])){
                 </a>
               </li>
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="php/logout.php" class="nav-link link" style="color: black;">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>Logout</p>
+            </a>
           </li>
         </ul>
       </nav>
