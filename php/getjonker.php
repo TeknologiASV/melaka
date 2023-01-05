@@ -51,55 +51,50 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
 
                 if($row['Place'] == 'Jonker'){
                     if($row['Condition'] == 'PPL-in'){
-                        if($row['Device'] == 'jp1'){
+                        /*if($row['Device'] == 'jp1'){
                             $message[$key]['ent1Count'] += (int)$row['Count'];
                             $ent1Count += (int)$row['Count'];
-
-                            $message[$key]['ent6Count'] += ceil((int)$row['Count'] * 0.8);
-                            $ent6Count += ceil((int)$row['Count'] * 0.8);
                         }
-                        else if($row['Device'] == 'jp3'){
+                        else */if($row['Device'] == 'jp3'){
                             $message[$key]['ent2Count'] += (int)$row['Count'];
                             $ent2Count += (int)$row['Count'];
+
+                            $message[$key]['ent1Count'] += ceil((int)$row['Count'] * 16);
+                            $ent1Count += ceil((int)$row['Count'] * 16);
+
+                            $message[$key]['ent4Count'] += ceil((int)$row['Count'] * 0.5);
+                            $ent4Count += ceil((int)$row['Count'] * 0.5);
+
+                            $message[$key]['ent5Count'] += ceil((int)$row['Count'] * 5);
+                            $ent5Count += ceil((int)$row['Count'] * 5);
+
+                            $message[$key]['ent6Count'] += ceil((int)$row['Count'] * 13);
+                            $ent6Count += ceil((int)$row['Count'] * 13);
                         }
                         else if($row['Device'] == 'jp4'){
                             $message[$key]['ent3Count'] += (int)$row['Count'];
                             $ent3Count += (int)$row['Count'];
-
-                            $message[$key]['ent4Count'] += ceil((int)$row['Count'] * 0.8);
-                            $ent4Count += ceil((int)$row['Count'] * 0.8);
                         }
                         /*else if($row['Device'] == 'jp5'){
                             $message[$key]['ent4Count'] += (int)$row['Count'];
                             $ent4Count += (int)$row['Count'];
-                        }*/
+                        }
                         else if($row['Device'] == 'jp6'){
                             $message[$key]['ent5Count'] += (int)$row['Count'];
                             $ent5Count += (int)$row['Count'];
                         }
-                        /*else if($row['Device'] == 'jp7' || $row['Device'] == 'jp8'){
+                        else if($row['Device'] == 'jp8'){
                             $message[$key]['ent6Count'] += (int)$row['Count'];
                             $ent6Count += (int)$row['Count'];
                         }*/
                     }
                     else if($row['Condition'] == 'VCL-in'){
-                        if($row['Device'] == 'jp1'){
-                            $message[$key]['veh2Count'] += (int)$row['Count'];
-                        }
-                        else if($row['Device'] == 'jp7'){
+                        if($row['Device'] == 'jp7'){
                             $message[$key]['veh7Count'] += (int)$row['Count'];
                         }
                     }
                 }
             }
-
-            /*if($ent3Count <= 0){
-                $ent3Count = round($ent2Count * 0.75);
-            }
-
-            if($ent5Count <= 0){
-                $ent5Count = round($ent3Count * 0.85);
-            }*/
             
             echo json_encode(
                 array(
