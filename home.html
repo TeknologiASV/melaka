@@ -288,11 +288,11 @@ $(function () {
           $('#entrance6').html('<p><span style="font-size: 25px;">'+obj.ent6Count+'</span><br>Visitors'+'</p>');
 
           removeData(stackChart);
-          removeData(stackChart2);
+          //removeData(stackChart2);
 
           for(var i=0; i<obj.message.length; i++){
             addStackChartData(stackChart, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent2Count, obj.message[i].ent3Count, obj.message[i].ent4Count, obj.message[i].ent5Count, obj.message[i].ent6Count);
-            addLineChartData(stackChart2, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
+            //addLineChartData(stackChart2, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
           }
         }
         else if(obj.status === 'failed'){
@@ -617,11 +617,11 @@ $(function () {
         $('#entrancedaily6').html('<p><span style="font-size: 25px;">'+obj.ent6Count+'</span><br>Visitors'+'</p>');
 
         removeData(stackChart3);
-        removeData(stackChart4);
+        //removeData(stackChart4);
 
         for(var i=0; i<obj.message.length; i++){
           addStackChartData(stackChart3, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent2Count, obj.message[i].ent3Count, obj.message[i].ent4Count, obj.message[i].ent5Count, obj.message[i].ent6Count);
-          addLineChartData(stackChart4, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
+          //addLineChartData(stackChart4, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
         }
       }
       else if(obj.status === 'failed'){
