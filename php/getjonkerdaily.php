@@ -51,11 +51,11 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
 
                 if($row['Place'] == 'Jonker'){
                     if($row['Condition'] == 'PPL-in'){
-                        /*if($row['Device'] == 'jp1'){
+                        if($row['Device'] == 'jp1'){
                             $message[$key]['ent1Count'] += (int)$row['Count'];
                             $ent1Count += (int)$row['Count'];
                         }
-                        else */if($row['Device'] == 'jp3'){
+                        else if($row['Device'] == 'jp3'){
                             $message[$key]['ent2Count'] += (int)$row['Count'];
                             $ent2Count += (int)$row['Count'];
 
@@ -75,7 +75,7 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                             $message[$key]['ent3Count'] += (int)$row['Count'];
                             $ent3Count += (int)$row['Count'];
                         }
-                        /*else if($row['Device'] == 'jp5'){
+                        else if($row['Device'] == 'jp5'){
                             $message[$key]['ent4Count'] += (int)$row['Count'];
                             $ent4Count += (int)$row['Count'];
                         }
@@ -86,7 +86,7 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                         else if($row['Device'] == 'jp8'){
                             $message[$key]['ent6Count'] += (int)$row['Count'];
                             $ent6Count += (int)$row['Count'];
-                        }*/
+                        }
                     }
                     else if($row['Condition'] == 'VCL-in'){
                         if($row['Device'] == 'jp7'){
