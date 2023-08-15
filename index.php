@@ -86,6 +86,12 @@ if(!isset($_SESSION['userID'])){
               <p>Pasar Melaka</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="#merah" data-file="merah.html" class="nav-link link" style="color: black;">
+              <i class="nav-icon fas fa-home"></i>
+              <p>Rumah Merah</p>
+            </a>
+          </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link" style="color: black;">
               <i class="nav-icon fas fa-cogs"></i>
@@ -220,6 +226,15 @@ function addStackChartData(chart, label, data, data2, data3, data4, data5, data6
   chart.data.datasets[3].data.push(data4);
   chart.data.datasets[4].data.push(data5);
   chart.data.datasets[5].data.push(data6);
+  chart.update();
+}
+
+function addStackChartData2(chart, label, data, data2, data3, data4) {
+  chart.data.labels.push(label);
+  chart.data.datasets[0].data.push(data);
+  chart.data.datasets[1].data.push(data2);
+  chart.data.datasets[2].data.push(data3);
+  chart.data.datasets[3].data.push(data4);
   chart.update();
 }
 
