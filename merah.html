@@ -526,29 +526,25 @@ $(function () {
         reservationtime = $('#reservationtime').val() ? $('#reservationtime').val() + ':00' : '00:00:00',
         endtime = $('#endtime').val() ? $('#endtime').val() + ':59' : '23:59:59';
 
-    $.post('php/getjonkerdaily.php', {startDate: reservationdate + " " + reservationtime, endDate: reservationdate + " " + endtime}, function(data){
+    $.post('php/getstadthuysdaily.php', {startDate: reservationdate + " " + reservationtime, endDate: reservationdate + " " + endtime}, function(data){
       var obj = JSON.parse(data);
 
       if(obj.status === 'success'){
         removeData(totalVisitorsChart2);
-        addData(totalVisitorsChart2, 'Jalan Hand Jebat (Roundabout)', obj.ent1Count);
-        addData(totalVisitorsChart2, 'Jalan Hang Kasturi (Right)', obj.ent2Count);
-        addData(totalVisitorsChart2, 'Jalan Hang Kasturi (Left)', obj.ent3Count);
-        addData(totalVisitorsChart2, 'Jalan Hang Lekiu', obj.ent4Count);
-        addData(totalVisitorsChart2, 'Jalan Hang Lekir', obj.ent5Count);
-        addData(totalVisitorsChart2, 'Jalan Hang Jebat (Stage)', obj.ent6Count);
+        addData(totalVisitorsChart2, 'Jalan Laksamana', obj.ent1Count);
+        addData(totalVisitorsChart2, 'Jabatan Tan Kim Seng', obj.ent2Count);
+        addData(totalVisitorsChart2, 'Jalan Khalil Yaakob', obj.ent3Count);
+        addData(totalVisitorsChart2, 'Jalan Gereja', obj.ent4Count);
         $('#entrancedaily1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
         $('#entrancedaily2').html('<p><span style="font-size: 25px;">'+obj.ent2Count+'</span><br>Visitors'+'</p>');
         $('#entrancedaily3').html('<p><span style="font-size: 25px;">'+obj.ent3Count+'</span><br>Visitors'+'</p>');
         $('#entrancedaily4').html('<p><span style="font-size: 25px;">'+obj.ent4Count+'</span><br>Visitors'+'</p>');
-        $('#entrancedaily5').html('<p><span style="font-size: 25px;">'+obj.ent5Count+'</span><br>Visitors'+'</p>');
-        $('#entrancedaily6').html('<p><span style="font-size: 25px;">'+obj.ent6Count+'</span><br>Visitors'+'</p>');
 
         removeData(stackChart3);
         //removeData(stackChart4);
 
         for(var i=0; i<obj.message.length; i++){
-          addStackChartData(stackChart3, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent2Count, obj.message[i].ent3Count, obj.message[i].ent4Count, obj.message[i].ent5Count, obj.message[i].ent6Count);
+          addStackChartData2(stackChart3, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent2Count, obj.message[i].ent3Count, obj.message[i].ent4Count);
           //addLineChartData(stackChart4, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
         }
       }
