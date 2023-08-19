@@ -250,14 +250,14 @@ $(function () {
 
         if(obj.status === 'success'){
           removeData(totalVisitorsChart);
-          addData(totalVisitorsChart, 'Entrance 1', obj.ent1Count);
-          addData(totalVisitorsChart, 'Entrance 2', obj.ent2Count);
-          addData(totalVisitorsChart, 'Entrance 3', obj.ent3Count);
-          //addData(totalVisitorsChart, 'Entrance 4', obj.ent4Count);
+          addData(totalVisitorsChart, 'Jalan Laksamana', obj.ent1Count);
+          addData(totalVisitorsChart, 'Jabatan Tan Kim Seng', obj.ent2Count);
+          addData(totalVisitorsChart, 'Jalan Khalil Yaakob', obj.ent3Count);
+          addData(totalVisitorsChart, 'Jalan Gereja', obj.ent4Count);
           $('#entrance1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
           $('#entrance2').html('<p><span style="font-size: 25px;">'+obj.ent2Count+'</span><br>Visitors'+'</p>');
           $('#entrance3').html('<p><span style="font-size: 25px;">'+obj.ent3Count+'</span><br>Visitors'+'</p>');
-          //$('#entrance4').html('<p><span style="font-size: 25px;">'+obj.ent4Count+'</span><br>Visitors'+'</p>');
+          $('#entrance4').html('<p><span style="font-size: 25px;">'+obj.ent4Count+'</span><br>Visitors'+'</p>');
 
           removeData(stackChart);
           //removeData(totalVehiclesMonth);
@@ -562,10 +562,10 @@ $(function () {
 
     if(obj.status === 'success'){
       removeData(totalVisitorsChart);
-      addData(totalVisitorsChart, 'Entrance 1', obj.ent1Count);
-      addData(totalVisitorsChart, 'Entrance 2', obj.ent2Count);
-      addData(totalVisitorsChart, 'Entrance 3', obj.ent3Count);
-      addData(totalVisitorsChart, 'Entrance 4', obj.ent4Count);
+      addData(totalVisitorsChart, 'Jalan Laksamana', obj.ent1Count);
+      addData(totalVisitorsChart, 'Jabatan Tan Kim Seng', obj.ent2Count);
+      addData(totalVisitorsChart, 'Jalan Khalil Yaakob', obj.ent3Count);
+      addData(totalVisitorsChart, 'Jalan Gereja', obj.ent4Count);
       $('#entrance1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
       $('#entrance2').html('<p><span style="font-size: 25px;">'+obj.ent2Count+'</span><br>Visitors'+'</p>');
       $('#entrance3').html('<p><span style="font-size: 25px;">'+obj.ent3Count+'</span><br>Visitors'+'</p>');
