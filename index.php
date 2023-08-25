@@ -14,7 +14,7 @@ if(!isset($_SESSION['userID'])){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MBSB | Dashboard</title>
+  <title>MBMB | Dashboard</title>
 
   <link rel="icon" href="images/logo.png" type="image">
   <!-- Google Font: Source Sans Pro -->
