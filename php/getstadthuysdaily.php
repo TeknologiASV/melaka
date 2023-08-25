@@ -52,21 +52,21 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
 
                 if($row['Place'] == 'redhouse'){
                     if($row['Condition'] == 'PPL-in'){
-                        if($row['Device'] == 'jp5'){
+                        if($row['Device'] == 'e1'){
                             $message[$key]['ent1Count'] += (int)$row['Count'];
                             $ent1Count += (int)$row['Count'];
                         }
-                        else if($row['Device'] == 'jv1'){
+                        else if($row['Device'] == 'e2'){
                             $message[$key]['ent2Count'] += (int)$row['Count'];
                             $ent2Count += (int)$row['Count'];
                         }
-                        else if($row['Device'] == 'jp6'){
+                        else if($row['Device'] == 'e3'){
                             $message[$key]['ent3Count'] += (int)$row['Count'];
                             $ent3Count += (int)$row['Count'];
                         }
                     }
                     else if($row['Condition'] == 'VCL-in'){
-                        if($row['Device'] == 'jp5'){
+                        if($row['Device'] == 'e1'){
                             $message[$key]['veh1Count'] += (int)$row['Count'];
                         }
                     }
