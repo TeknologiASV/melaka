@@ -89,7 +89,7 @@ if(!isset($_SESSION['userID'])){
           <li class="nav-item">
             <a href="#merah" data-file="merah.html" class="nav-link link" style="color: black;">
               <i class="nav-icon fas fa-home"></i>
-              <p>Rumah Merah</p>
+              <p>Bangunan Merah</p>
             </a>
           </li>
           <li class="nav-item has-treeview">
