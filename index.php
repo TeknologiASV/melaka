@@ -207,7 +207,7 @@ $(function () {
       });
   });
   
-  $("a[href='#home']").click();
+  $("a[href='#merah']").click();
 });
 
 function addData(chart, label, data) {
