@@ -51,8 +51,11 @@
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="card">
-                      <div class="card-header">
-                        <h3 class="card-title">Total Visitors</h3>
+                      <div class="card-header border-0">
+                        <div class="d-flex justify-content-between">
+                          <h3 class="card-title">Total Visitors</h3>
+                          <h5 id="totalVisitorsWeekly">Total Visitors = 0</h5>
+                        </div>
                       </div>
                       <div class="card-body">
                         <div class="chart">
@@ -86,6 +89,12 @@
                   <div class="col-lg-8">
                     <div class="row">
                       <div class="col-6">
+                        <div class="card" style="background: red;color: white;">
+                          <div class="card-header"><h3 class="card-title">Total</div>
+                          <div class="card-body" id="entrance4"></div>
+                        </div>
+                      </div>
+                      <div class="col-6">
                         <div class="card">
                           <div class="card-header"><h3 class="card-title">Jalan Laksamana</h3></div>
                           <div class="card-body" id="entrance1"></div>
@@ -101,12 +110,6 @@
                         <div class="card">
                           <div class="card-header"><h3 class="card-title">Jalan Khalil Yaakob</h3></div>
                           <div class="card-body" id="entrance3"></div>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="card">
-                          <div class="card-header"><h3 class="card-title">Jalan Gereja</div>
-                          <div class="card-body" id="entrance4"></div>
                         </div>
                       </div>
                     </div>
@@ -163,8 +166,11 @@
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="card">
-                      <div class="card-header">
-                        <h3 class="card-title">Total Visitors (Daily)</h3>
+                      <div class="card-header border-0">
+                        <div class="d-flex justify-content-between">
+                          <h3 class="card-title">Total Daily</h3>
+                          <h5 id="totalVisitorsDailyText">Total Visitors = 0</h5>
+                        </div>
                       </div>
                       <div class="card-body">
                         <div class="chart">
@@ -198,6 +204,12 @@
                   <div class="col-lg-8">
                     <div class="row">
                       <div class="col-6">
+                        <div class="card" style="background: red;color: white;">
+                          <div class="card-header"><h3 class="card-title">Total</div>
+                          <div class="card-body" id="entrancedaily4"></div>
+                        </div>
+                      </div>
+                      <div class="col-6">
                         <div class="card">
                           <div class="card-header"><h3 class="card-title">Jalan Laksamana</h3></div>
                           <div class="card-body" id="entrancedaily1"></div>
@@ -213,12 +225,6 @@
                         <div class="card">
                           <div class="card-header"><h3 class="card-title">Jalan Khalil Yaakob</h3></div>
                           <div class="card-body" id="entrancedaily3"></div>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="card">
-                          <div class="card-header"><h3 class="card-title">Jalan Gereja</div>
-                          <div class="card-body" id="entrancedaily4"></div>
                         </div>
                       </div>
                     </div>
@@ -281,7 +287,8 @@ $(function () {
           $('#entrance1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
           $('#entrance2').html('<p><span style="font-size: 25px;">'+obj.ent2Count+'</span><br>Visitors'+'</p>');
           $('#entrance3').html('<p><span style="font-size: 25px;">'+obj.ent3Count+'</span><br>Visitors'+'</p>');
-          $('#entrance4').html('<p><span style="font-size: 25px;">'+obj.ent4Count+'</span><br>Visitors'+'</p>');
+          $('#entrance4').html('<p><span style="font-size: 25px;">'+(obj.ent1Count + obj.ent2Count + obj.ent3Count).toString()+'</span><br>Visitors'+'</p>');
+          $('#totalVisitorsWeekly').html('Total Visitors = ' + (obj.ent1Count + obj.ent2Count + obj.ent3Count).toString());
 
           removeData(stackChart);
           removeData(stackChart2);
@@ -623,8 +630,9 @@ $(function () {
         $('#entrancedaily1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
         $('#entrancedaily2').html('<p><span style="font-size: 25px;">'+obj.ent2Count+'</span><br>Visitors'+'</p>');
         $('#entrancedaily3').html('<p><span style="font-size: 25px;">'+obj.ent3Count+'</span><br>Visitors'+'</p>');
-        $('#entrancedaily4').html('<p><span style="font-size: 25px;">'+obj.ent4Count+'</span><br>Visitors'+'</p>');
-
+        $('#entrancedaily4').html('<p><span style="font-size: 25px;">'+(obj.ent1Count + obj.ent2Count + obj.ent3Count).toString()+'</span><br>Visitors'+'</p>');
+        $('#totalVisitorsDailyText').html('Total Visitors = ' + (obj.ent1Count + obj.ent2Count + obj.ent3Count).toString());
+        
         removeData(stackChart3);
         removeData(stackChart4);
 
@@ -655,7 +663,8 @@ $(function () {
       $('#entrance1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
       $('#entrance2').html('<p><span style="font-size: 25px;">'+obj.ent2Count+'</span><br>Visitors'+'</p>');
       $('#entrance3').html('<p><span style="font-size: 25px;">'+obj.ent3Count+'</span><br>Visitors'+'</p>');
-      $('#entrance4').html('<p><span style="font-size: 25px;">'+obj.ent4Count+'</span><br>Visitors'+'</p>');
+      $('#entrance4').html('<p><span style="font-size: 25px;">'+(obj.ent1Count + obj.ent2Count + obj.ent3Count).toString()+'</span><br>Visitors'+'</p>');
+      $('#totalVisitorsWeekly').html('Total Visitors = ' + (obj.ent1Count + obj.ent2Count + obj.ent3Count).toString());
 
       removeData(stackChart);
       removeData(stackChart2);
@@ -687,7 +696,8 @@ $(function () {
       $('#entrancedaily1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
       $('#entrancedaily2').html('<p><span style="font-size: 25px;">'+obj.ent2Count+'</span><br>Visitors'+'</p>');
       $('#entrancedaily3').html('<p><span style="font-size: 25px;">'+obj.ent3Count+'</span><br>Visitors'+'</p>');
-      $('#entrancedaily4').html('<p><span style="font-size: 25px;">'+obj.ent4Count+'</span><br>Visitors'+'</p>');
+      $('#entrancedaily4').html('<p><span style="font-size: 25px;">'+(obj.ent1Count + obj.ent2Count + obj.ent3Count).toString()+'</span><br>Visitors'+'</p>');
+      $('#totalVisitorsDailyText').html('Total Visitors = ' + (obj.ent1Count + obj.ent2Count + obj.ent3Count).toString());
 
       removeData(stackChart3);
       removeData(stackChart4);
