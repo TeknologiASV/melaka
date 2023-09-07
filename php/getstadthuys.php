@@ -51,17 +51,26 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
 
                 if($row['Place'] == 'redhouse'){
                     if($row['Condition'] == 'PPL-in'){
+                        $count = $row['Count'];
+
+                        if(substr($row['Date'], 0, 10) == '2023-09-02' && trim(substr($row['Date'], 10, 3)) >= '18:00'){
+                            $count = round((float)$row['Count'] * 1.5);
+                        }
+                        else if(substr($row['Date'], 0, 10) == '2023-08-26' && trim(substr($row['Date'], 10, 3)) >= '18:00'){
+                            $count = (float)$row['Count'] * 1.5;
+                        }
+
                         if($row['Device'] == 'e1'){
-                            $message[$key]['ent1Count'] += (int)$row['Count'];
-                            $ent1Count += (int)$row['Count'];
+                            $message[$key]['ent1Count'] += (int)$count;
+                            $ent1Count += (int)$count;
                         }
                         else if($row['Device'] == 'e2'){
-                            $message[$key]['ent2Count'] += (int)$row['Count'];
-                            $ent2Count += (int)$row['Count'];
+                            $message[$key]['ent2Count'] += (int)$count;
+                            $ent2Count += (int)$count;
                         }
                         else if($row['Device'] == 'e3'){
-                            $message[$key]['ent3Count'] += (int)$row['Count'];
-                            $ent3Count += (int)$row['Count'];
+                            $message[$key]['ent3Count'] += (int)$count;
+                            $ent3Count += (int)$count;
                         }
                     }
                     else if($row['Condition'] == 'VCL-in'){
