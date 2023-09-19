@@ -133,7 +133,7 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                         $ent4Count += (int)$message[$i]['ent4Count'];
                     }
 
-                    $message[$i]['ent1Count'] = $message[$i]['ent1Count'] + $message[$i]['ent4Count'];
+                    //$message[$i]['ent1Count'] = $message[$i]['ent1Count'] + $message[$i]['ent4Count'];
                 }
             }
             

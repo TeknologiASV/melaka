@@ -146,7 +146,7 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                         $ent4Count += (int)$message[$i]['ent4Count'];
                     }
 
-                    $message[$i]['ent1Count'] = $message[$i]['ent1Count'] + $message[$i]['ent4Count'];
+                    //$message[$i]['ent1Count'] = $message[$i]['ent1Count'] + $message[$i]['ent4Count'];
                 }
             }
             
@@ -154,7 +154,7 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                 array(
                     "status" => "success",
                     "message" => $message,
-                    "ent1Count" => $ent1Count + $ent4Count,
+                    "ent1Count" => $ent1Count,
                     "ent2Count" => $ent2Count,
                     "ent3Count" => $ent3Count,
                     "ent4Count" => $ent4Count
