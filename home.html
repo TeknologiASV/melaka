@@ -51,6 +51,21 @@
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="card">
+                      <div class="card-header border-0">
+                        <div class="d-flex justify-content-between">
+                          <h3 class="card-title">Total Visitors</h3>
+                          <h5 id="totalVisitorsWeekly">Total Visitors = 0</h5>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div class="chart">
+                          <canvas id="totalVisitorsRedMonth" style="min-height: 250px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="card">
                       <div class="card-header">
                         <h3 class="card-title">Total Visitors By Entrance</h3>
                       </div>
@@ -161,6 +176,21 @@
                   </div>
                 </div>
                 <div class="row">
+                  <div class="col-lg-12">
+                    <div class="card">
+                      <div class="card-header border-0">
+                        <div class="d-flex justify-content-between">
+                          <h3 class="card-title">Total Daily</h3>
+                          <h5 id="totalVisitorsDailyText">Total Visitors = 0</h5>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div class="chart">
+                          <canvas id="totalVisitorsRedDaily" style="min-height: 250px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="col-lg-12">
                     <div class="card">
                       <div class="card-header">
@@ -286,13 +316,16 @@ $(function () {
           $('#entrance4').html('<p><span style="font-size: 25px;">'+obj.ent4Count+'</span><br>Visitors'+'</p>');
           $('#entrance5').html('<p><span style="font-size: 25px;">'+obj.ent5Count+'</span><br>Visitors'+'</p>');
           $('#entrance6').html('<p><span style="font-size: 25px;">'+obj.ent6Count+'</span><br>Visitors'+'</p>');
+          $('#totalVisitorsWeekly').html('Total Visitors = ' + (obj.ent1Count + obj.ent2Count + obj.ent3Count + obj.ent4Count + obj.ent5Count + obj.ent6Count).toString());
 
           removeData(stackChart);
+          removeData(stackChart2);
           //removeData(stackChart2);
 
           for(var i=0; i<obj.message.length; i++){
             addStackChartData(stackChart, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent2Count, obj.message[i].ent3Count, obj.message[i].ent4Count, obj.message[i].ent5Count, obj.message[i].ent6Count);
             //addLineChartData(stackChart2, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
+            addBarChartData(stackChart2, obj.message[i].Date, (parseInt(obj.message[i].ent1Count) + parseInt(obj.message[i].ent2Count) + parseInt(obj.message[i].ent3Count) + parseInt(obj.message[i].ent4Count) + parseInt(obj.message[i].ent5Count) + parseInt(obj.message[i].ent6Count)).toString());
           }
         }
         else if(obj.status === 'failed'){
@@ -391,6 +424,35 @@ $(function () {
     options: stackedBarChartOptions
   });
 
+  var stackedBarChartCanvas2 = $('#totalVisitorsRedMonth').get(0).getContext('2d')
+  var stackedBarChartData2 = {
+    labels  : ['1/1', '2/1', '3/1', '4/1', '5/1', '6/1', '7/1'],
+    datasets: [
+      {
+        label               : 'Jonker Street',
+        backgroundColor     : 'rgba(244, 165, 34, 0.9)',
+        borderColor         : 'rgba(244, 165, 34, 0.8)',
+        pointRadius          : false,
+        pointColor          : '#f4a522',
+        pointStrokeColor    : 'rgba(244, 165, 34, 1)',
+        pointHighlightFill  : '#fff',
+        pointHighlightStroke: 'rgba(244, 165, 34, 1)',
+        data                : [0, 0, 0, 0, 0, 0, 0]
+      }
+    ]
+  };
+
+  var stackedBarChartOptions2 = {
+    responsive              : true,
+    maintainAspectRatio     : false,
+    scales: {xAxes: [{stacked: true,}], yAxes: [{stacked: true}]}
+  }
+
+  var stackChart2 = new Chart(stackedBarChartCanvas2, {
+    type: 'bar',
+    data: stackedBarChartData2,
+    options: stackedBarChartOptions2
+  });
   /*var stackedBarChartCanvas2 = $('#totalVehiclesMonth').get(0).getContext('2d')
   var stackedBarChartData2 = {
     labels  : ['1/1', '2/1', '3/1', '4/1', '5/1', '6/1', '7/1'],
@@ -517,6 +579,35 @@ $(function () {
     options: stackedBarChartOptions3
   });
 
+  var stackedBarChartCanvas4 = $('#totalVisitorsRedDaily').get(0).getContext('2d')
+  var stackedBarChartData4 = {
+    labels  : ['1/1', '2/1', '3/1', '4/1', '5/1', '6/1', '7/1'],
+    datasets: [
+      {
+        label               : 'Jonker Street',
+        backgroundColor     : 'rgba(244, 165, 34, 0.9)',
+        borderColor         : 'rgba(244, 165, 34, 0.8)',
+        pointRadius          : false,
+        pointColor          : '#f4a522',
+        pointStrokeColor    : 'rgba(244, 165, 34, 1)',
+        pointHighlightFill  : '#fff',
+        pointHighlightStroke: 'rgba(244, 165, 34, 1)',
+        data                : [0, 0, 0, 0, 0, 0, 0]
+      }
+    ]
+  };
+
+  var stackedBarChartOptions4 = {
+    responsive              : true,
+    maintainAspectRatio     : false,
+    scales: {xAxes: [{stacked: true,}], yAxes: [{stacked: true}]}
+  }
+
+  var stackChart4 = new Chart(stackedBarChartCanvas4, {
+    type: 'bar',
+    data: stackedBarChartData4,
+    options: stackedBarChartOptions4
+  });
   /*var stackedBarChartCanvas4 = $('#totalVehiclesDaily').get(0).getContext('2d')
   var stackedBarChartData4 = {
     labels  : ['1/1', '2/1', '3/1', '4/1', '5/1', '6/1', '7/1'],
@@ -615,13 +706,16 @@ $(function () {
         $('#entrancedaily4').html('<p><span style="font-size: 25px;">'+obj.ent4Count+'</span><br>Visitors'+'</p>');
         $('#entrancedaily5').html('<p><span style="font-size: 25px;">'+obj.ent5Count+'</span><br>Visitors'+'</p>');
         $('#entrancedaily6').html('<p><span style="font-size: 25px;">'+obj.ent6Count+'</span><br>Visitors'+'</p>');
+        $('#totalVisitorsDailyText').html('Total Visitors = ' + (obj.ent1Count + obj.ent2Count + obj.ent3Count + obj.ent4Count + obj.ent5Count + obj.ent6Count).toString());
 
         removeData(stackChart3);
+        removeData(stackChart4);
         //removeData(stackChart4);
 
         for(var i=0; i<obj.message.length; i++){
           addStackChartData(stackChart3, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent2Count, obj.message[i].ent3Count, obj.message[i].ent4Count, obj.message[i].ent5Count, obj.message[i].ent6Count);
           //addLineChartData(stackChart4, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
+          addBarChartData(stackChart4, obj.message[i].Date, (parseInt(obj.message[i].ent1Count) + parseInt(obj.message[i].ent2Count) + parseInt(obj.message[i].ent3Count) + parseInt(obj.message[i].ent4Count) + parseInt(obj.message[i].ent5Count) + parseInt(obj.message[i].ent6Count)).toString());
         }
       }
       else if(obj.status === 'failed'){
@@ -650,12 +744,15 @@ $(function () {
       $('#entrance4').html('<p><span style="font-size: 25px;">'+obj.ent4Count+'</span><br>Visitors'+'</p>');
       $('#entrance5').html('<p><span style="font-size: 25px;">'+obj.ent5Count+'</span><br>Visitors'+'</p>');
       $('#entrance6').html('<p><span style="font-size: 25px;">'+obj.ent6Count+'</span><br>Visitors'+'</p>');
+      $('#totalVisitorsWeekly').html('Total Visitors = ' + (obj.ent1Count + obj.ent2Count + obj.ent3Count + obj.ent4Count + obj.ent5Count + obj.ent6Count).toString());
 
       removeData(stackChart);
+      removeData(stackChart2);
       //removeData(stackChart2);
 
       for(var i=0; i<obj.message.length; i++){
         addStackChartData(stackChart, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent2Count, obj.message[i].ent3Count, obj.message[i].ent4Count, obj.message[i].ent5Count, obj.message[i].ent6Count);
+        addBarChartData(stackChart2, obj.message[i].Date, (parseInt(obj.message[i].ent1Count) + parseInt(obj.message[i].ent2Count) + parseInt(obj.message[i].ent3Count) + parseInt(obj.message[i].ent4Count) + parseInt(obj.message[i].ent5Count) + parseInt(obj.message[i].ent6Count)).toString());
         //addLineChartData(stackChart2, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
       }
     }
@@ -684,13 +781,16 @@ $(function () {
       $('#entrancedaily4').html('<p><span style="font-size: 25px;">'+obj.ent4Count+'</span><br>Visitors'+'</p>');
       $('#entrancedaily5').html('<p><span style="font-size: 25px;">'+obj.ent5Count+'</span><br>Visitors'+'</p>');
       $('#entrancedaily6').html('<p><span style="font-size: 25px;">'+obj.ent6Count+'</span><br>Visitors'+'</p>');
+      $('#totalVisitorsDailyText').html('Total Visitors = ' + (obj.ent1Count + obj.ent2Count + obj.ent3Count + obj.ent4Count + obj.ent5Count + obj.ent6Count).toString());
 
       removeData(stackChart3);
+      removeData(stackChart4);
       //removeData(stackChart4);
 
       for(var i=0; i<obj.message.length; i++){
         addStackChartData(stackChart3, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent2Count, obj.message[i].ent3Count, obj.message[i].ent4Count, obj.message[i].ent5Count, obj.message[i].ent6Count);
         //addLineChartData(stackChart4, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
+        addBarChartData(stackChart4, obj.message[i].Date, (parseInt(obj.message[i].ent1Count) + parseInt(obj.message[i].ent2Count) + parseInt(obj.message[i].ent3Count) + parseInt(obj.message[i].ent4Count) + parseInt(obj.message[i].ent5Count) + parseInt(obj.message[i].ent6Count)).toString());
       }
     }
     else if(obj.status === 'failed'){
