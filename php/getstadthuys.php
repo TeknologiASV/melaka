@@ -5,7 +5,8 @@ session_start();
 
 $cars = array (
     array(26,33,23,0),
-    array(25,38,26,11)
+    array(25,38,26,11),
+    array(24,37,27,12)
 );
 
 if(isset($_POST['startDate'], $_POST['endDate'])){
@@ -96,6 +97,9 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                     }
                     else if(substr($message[$i]['Date'], 5, 2) == '09'){
                         $month = 1;
+                    }
+                    else if(substr($message[$i]['Date'], 5, 2) == '10'){
+                        $month = 2;
                     }
 
                     //Find Total
