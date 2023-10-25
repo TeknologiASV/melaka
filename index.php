@@ -234,7 +234,7 @@ function addStackChartData2(chart, label, data, data2, data3, data4) {
   chart.data.datasets[0].data.push(data);
   chart.data.datasets[1].data.push(data2);
   chart.data.datasets[2].data.push(data3);
-  //chart.data.datasets[3].data.push(data4);
+  chart.data.datasets[3].data.push(data4);
   chart.update();
 }
 
