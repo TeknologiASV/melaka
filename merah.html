@@ -114,7 +114,7 @@
                       </div>
                     </div>
                   </div>
-                  <!--div class="col-lg-12">
+                  <div class="col-lg-12">
                     <div class="card">
                       <div class="card-header">
                         <h3 class="card-title">Total Vehicles By Entrance</h3>
@@ -125,7 +125,7 @@
                         </div>
                       </div>
                     </div>
-                  </div-->
+                  </div>
                 </div>
                 <!-- /.row -->
               </div>
@@ -229,7 +229,7 @@
                       </div>
                     </div>
                   </div>
-                  <!--div class="col-lg-12">
+                  <div class="col-lg-12">
                     <div class="card">
                       <div class="card-header">
                         <h3 class="card-title">Total Vehicles By Entrance</h3>
@@ -240,7 +240,7 @@
                         </div>
                       </div>
                     </div>
-                  </div-->
+                  </div>
                 </div>
                 <!-- /.row -->
               </div>
@@ -292,11 +292,11 @@ $(function () {
 
           removeData(stackChart);
           removeData(stackChart2);
-          //removeData(totalVehiclesMonth);
+          removeData(totalVehiclesMonth);
 
           for(var i=0; i<obj.message.length; i++){
             addStackChartData2(stackChart, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent4Count, obj.message[i].ent2Count, obj.message[i].ent3Count);
-            //addLineChartData(stackChart2, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
+            addBarChartData(stackChart2, obj.message[i].Date, obj.message[i].veh2Count);
             addBarChartData(stackChart2, obj.message[i].Date, (parseInt(obj.message[i].ent1Count) + parseInt(obj.message[i].ent2Count) + parseInt(obj.message[i].ent3Count) + parseInt(obj.message[i].ent4Count)).toString());
           }
         }
@@ -374,12 +374,12 @@ $(function () {
     options: stackedBarChartOptions
   });
 
-  /*var stackedBarChartCanvas2 = $('#totalVehiclesMonth').get(0).getContext('2d')
+  var stackedBarChartCanvas2 = $('#totalVehiclesMonth').get(0).getContext('2d')
   var stackedBarChartData2 = {
     labels  : ['1/1', '2/1', '3/1', '4/1', '5/1', '6/1', '7/1'],
     datasets: [
       {
-        label               : 'Jalan Hand Jebat (Roundabout)',
+        label               : 'Jalan Laksamana',
         backgroundColor     : 'rgba(244, 165, 34, 0.9)',
         borderColor         : 'rgba(244, 165, 34, 0.8)',
         pointRadius          : false,
@@ -387,17 +387,6 @@ $(function () {
         pointStrokeColor    : 'rgba(244, 165, 34, 1)',
         pointHighlightFill  : '#fff',
         pointHighlightStroke: 'rgba(244, 165, 34, 1)',
-        data                : [0, 0, 0, 0, 0, 0, 0]
-      },
-      {
-        label               : 'Jalan Hang Jebat (Stage)',
-        backgroundColor     : 'rgba(96, 146, 205, 1)',
-        borderColor         : 'rgba(96, 146, 205, 1)',
-        pointRadius         : false,
-        pointColor          : 'rgba(96, 146, 205, 1)',
-        pointStrokeColor    : '#6092cd',
-        pointHighlightFill  : '#fff',
-        pointHighlightStroke: 'rgba(96, 146, 205, 1)',
         data                : [0, 0, 0, 0, 0, 0, 0]
       }
     ]
@@ -413,7 +402,7 @@ $(function () {
     type: 'bar',
     data: stackedBarChartData2,
     options: stackedBarChartOptions2
-  });*/
+  });
 
   var stackedBarChartCanvas2 = $('#totalVisitorsRedMonth').get(0).getContext('2d')
   var stackedBarChartData2 = {
@@ -635,12 +624,12 @@ $(function () {
 
         removeData(stackChart3);
         removeData(stackChart4);
-        //removeData(stackChart4);
+        removeData(stackChart4);
 
         for(var i=0; i<obj.message.length; i++){
           addStackChartData2(stackChart3, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent4Count, obj.message[i].ent2Count, obj.message[i].ent3Count);
           addBarChartData(stackChart4, obj.message[i].Date, (parseInt(obj.message[i].ent1Count) + parseInt(obj.message[i].ent2Count) + parseInt(obj.message[i].ent3Count)).toString());
-          //addLineChartData(stackChart4, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
+          addBarChartData(stackChart4, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
         }
       }
       else if(obj.status === 'failed'){
@@ -669,11 +658,11 @@ $(function () {
 
       removeData(stackChart);
       removeData(stackChart2);
-      //removeData(totalVehiclesMonth);
+      removeData(totalVehiclesMonth);
 
       for(var i=0; i<obj.message.length; i++){
         addStackChartData2(stackChart, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent4Count, obj.message[i].ent2Count, obj.message[i].ent3Count);
-        //addLineChartData(stackChart2, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
+        addBarChartData(stackChart2, obj.message[i].Date, obj.message[i].veh2Count);
         addBarChartData(stackChart2, obj.message[i].Date, (parseInt(obj.message[i].ent1Count) + parseInt(obj.message[i].ent2Count) + parseInt(obj.message[i].ent3Count) + parseInt(obj.message[i].ent4Count)).toString());
       }
     }
@@ -702,12 +691,12 @@ $(function () {
 
       removeData(stackChart3);
       removeData(stackChart4);
-      //removeData(stackChart4);
+      removeData(stackChart4);
 
       for(var i=0; i<obj.message.length; i++){
         addStackChartData2(stackChart3, obj.message[i].Date, obj.message[i].ent1Count, obj.message[i].ent4Count, obj.message[i].ent2Count, obj.message[i].ent3Count);
         addBarChartData(stackChart4, obj.message[i].Date, (parseInt(obj.message[i].ent1Count) + parseInt(obj.message[i].ent2Count) + parseInt(obj.message[i].ent3Count)).toString());
-        //addLineChartData(stackChart4, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
+        addBarChartData(stackChart4, obj.message[i].Date, obj.message[i].veh2Count, obj.message[i].veh7Count);
       }
     }
     else if(obj.status === 'failed'){
