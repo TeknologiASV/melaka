@@ -57,7 +57,8 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                         'ent5Count' => 0,
                         'ent6Count' => 0,
                         'veh2Count' => 0,
-                        'veh7Count' => 0
+                        'veh7Count' => 0,
+                        'total' => 0
                     );
 
                     array_push($dateBar, substr($row['Date'], 10, 3));
