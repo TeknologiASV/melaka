@@ -280,8 +280,8 @@ $(function () {
 
         if(obj.status === 'success'){
           removeData(totalVisitorsChart);
-          addData(totalVisitorsChart, 'Jalan Laksamana 1', obj.ent1Count);
-          addData(totalVisitorsChart, 'Jalan Laksamana 2', obj.ent4Count);
+          addData(totalVisitorsChart, 'Jalan Laksamana 1', obj.ent4Count);
+          addData(totalVisitorsChart, 'Jalan Laksamana 2', obj.ent1Count);
           addData(totalVisitorsChart, 'Jabatan Tan Kim Seng', obj.ent2Count);
           addData(totalVisitorsChart, 'Jalan Khalil Yaakob', obj.ent3Count);
           $('#entrance1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
@@ -534,11 +534,11 @@ $(function () {
   // Get context with jQuery - using jQuery's .get() method.
   var donutChartCanvas = $('#totalVisitors').get(0).getContext('2d');
   var donutData        = {
-    labels: ['Jalan Laksamana', 'Jabatan Tan Kim Seng', 'Jalan Khalil Yaakob'],
+    labels: ['Jalan Laksamana 1', 'Jalan Laksamana 2', 'Jabatan Tan Kim Seng', 'Jalan Khalil Yaakob'],
     datasets: [
       {
         data: [0,0,0,0],
-        backgroundColor : ['#f4a522', '#6092cd', '#61b546'],
+        backgroundColor : ['#f4a522', '#89dcf0', '#6092cd', '#72bc5a'],
       }
     ]
   }
@@ -551,7 +551,7 @@ $(function () {
     datasets: [
       {
         data: [0,0,0,0],
-        backgroundColor : ['#f4a522', '#6092cd', '#61b546', '#89dcf0'],
+        backgroundColor : ['#f4a522', '#89dcf0', '#6092cd', '#72bc5a'],
       }
     ]
   }
@@ -572,8 +572,8 @@ $(function () {
 
       if(obj.status === 'success'){
         removeData(totalVisitorsChart2);
-        addData(totalVisitorsChart2, 'Jalan Laksamana 1', obj.ent1Count);
-        addData(totalVisitorsChart2, 'Jalan Laksamana 2', obj.ent4Count);
+        addData(totalVisitorsChart2, 'Jalan Laksamana 1', obj.ent4Count);
+        addData(totalVisitorsChart2, 'Jalan Laksamana 2', obj.ent1Count);
         addData(totalVisitorsChart2, 'Jabatan Tan Kim Seng', obj.ent2Count);
         addData(totalVisitorsChart2, 'Jalan Khalil Yaakob', obj.ent3Count);
         $('#entrancedaily1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
@@ -606,8 +606,8 @@ $(function () {
 
     if(obj.status === 'success'){
       removeData(totalVisitorsChart);
-      addData(totalVisitorsChart, 'Jalan Laksamana 1', obj.ent1Count);
-      addData(totalVisitorsChart, 'Jalan Laksamana 2', obj.ent4Count);
+      addData(totalVisitorsChart, 'Jalan Laksamana 1', obj.ent4Count);
+      addData(totalVisitorsChart, 'Jalan Laksamana 2', obj.ent1Count);
       addData(totalVisitorsChart, 'Jabatan Tan Kim Seng', obj.ent2Count);
       addData(totalVisitorsChart, 'Jalan Khalil Yaakob', obj.ent3Count);
       $('#entrance1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');
@@ -639,8 +639,8 @@ $(function () {
 
     if(obj.status === 'success'){
       removeData(totalVisitorsChart2);
-      addData(totalVisitorsChart2, 'Jalan Laksamana 1', obj.ent1Count);
-      addData(totalVisitorsChart2, 'Jalan Laksamana 2', obj.ent4Count);
+      addData(totalVisitorsChart2, 'Jalan Laksamana 1', obj.ent4Count);
+      addData(totalVisitorsChart2, 'Jalan Laksamana 2', obj.ent1Count);
       addData(totalVisitorsChart2, 'Jabatan Tan Kim Seng', obj.ent2Count);
       addData(totalVisitorsChart2, 'Jalan Khalil Yaakob', obj.ent3Count);
       $('#entrancedaily1').html('<p><span style="font-size: 25px;">'+obj.ent1Count+'</span><br>Visitors'+'</p>');

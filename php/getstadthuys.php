@@ -13,7 +13,9 @@ $cars = array (
     array(22,35,28,12),
     array(25,36,28,11),
     array(24,37,27,12),
-    array(25,38,26,11)
+    array(25,38,26,11),
+    array(25,36,28,11),
+    array(22,35,28,12)
 );
 
 if(isset($_POST['startDate'], $_POST['endDate'])){
@@ -129,6 +131,12 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                     else if(substr($message[$i]['Date'], 5, 2) == '05'){
                         $month = 9;
                     }
+                    else if(substr($message[$i]['Date'], 5, 2) == '06'){
+                        $month = 10;
+                    }
+                    else if(substr($message[$i]['Date'], 5, 2) == '07'){
+                        $month = 11;
+                    }
 
                     //Find Total
                     if($message[$i]['ent1Count'] != 0){
@@ -147,25 +155,23 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                     // Assign Value
                     if($message[$i]['ent1Count'] == 0){
                         $message[$i]['ent1Count'] = round(floatval($message[$i]['total'] * ($cars[$month][0]/100)) * 1.2);
-                        $ent1Count += round((int)$message[$i]['ent1Count'] * 1.2);
+                        $ent1Count += round((int)$message[$i]['ent1Count']);
                     }
                     
                     if($message[$i]['ent2Count'] == 0){
                         $message[$i]['ent2Count'] = round(floatval($message[$i]['total'] * ($cars[$month][1]/100)) * 1.2);
-                        $ent2Count += round((int)$message[$i]['ent2Count'] * 1.2);
+                        $ent2Count += round((int)$message[$i]['ent2Count']);
                     }
                     
                     if($message[$i]['ent3Count'] == 0){
                         $message[$i]['ent3Count'] = round(floatval($message[$i]['total'] * ($cars[$month][2]/100)) * 1.4);
-                        $ent3Count += round((int)$message[$i]['ent3Count'] * 1.4);
+                        $ent3Count += round((int)$message[$i]['ent3Count']);
                     }
 
                     if($message[$i]['ent4Count'] == 0 && $message[$i]['Date'] >= '2023-09-10'){
                         $message[$i]['ent4Count'] = round(floatval($message[$i]['total'] * ($cars[$month][3]/100)) * 1.2);
-                        $ent4Count += round((int)$message[$i]['ent4Count'] * 1.2);
+                        $ent4Count += round((int)$message[$i]['ent4Count']);
                     }
-
-                    //$message[$i]['ent1Count'] = $message[$i]['ent1Count'] + $message[$i]['ent4Count'];
                 }
             }
             
@@ -173,10 +179,10 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                 array(
                     "status" => "success",
                     "message" => $message,
-                    "ent1Count" => $ent1Count,
+                    "ent1Count" => $ent4Count,
                     "ent2Count" => $ent2Count,
                     "ent3Count" => $ent3Count,
-                    "ent4Count" => $ent4Count
+                    "ent4Count" => $ent1Count
                 )
             );   
         }
