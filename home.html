@@ -145,13 +145,13 @@
                 <div class="row">
                   <div class="col-3">
                     <div class="form-group">
-                      <label>Date:</label>
+                      <label>Start Date:</label>
                       <div class="input-group">
                         <input id="reservationdate" type="date" class="form-control">
                       </div>
                     </div>
                   </div>
-                  <div class="col-3">
+                  <div class="col-2">
                     <div class="form-group">
                       <label>Start Time:</label>
                       <div class="input-group">
@@ -161,13 +161,21 @@
                   </div>
                   <div class="col-3">
                     <div class="form-group">
+                      <label>End Date:</label>
+                      <div class="input-group">
+                        <input id="reservationedate" type="date" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="form-group">
                       <label>End Time:</label>
                       <div class="input-group">
                         <input id="endtime" type="time" class="form-control">
                       </div>
                     </div>
                   </div>
-                  <div class="col-3">
+                  <div class="col-2">
                     <label></label>
                     <button type="button" class="btn btn-block bg-gradient-warning btn" id="filterSearch">
                       <i class="fas fa-search"></i>
@@ -281,6 +289,9 @@
 
 <script>
 $(function () {
+  document.getElementById('reservationdate').setAttribute('max', formatDate(new Date()));
+  document.getElementById('reservationedate').setAttribute('min', formatDate(new Date()));
+
   //Date range as a button
   $('#daterange-btn').daterangepicker(
     {
@@ -681,15 +692,17 @@ $(function () {
   var totalVisitorsChart2= new Chart(donutChartCanvas2, {type: 'doughnut', data: donutData2, options: donutOptions2});
 
   $('#reservationdate').val(formatDate(new Date()));
+  $('#reservationedate').val(formatDate(new Date()));
   $('#reservationtime').val('00:00');
   $('#endtime').val('23:59');
 
   $('#filterSearch').on('click', function(){
     var reservationdate = $('#reservationdate').val() ? $('#reservationdate').val() : formatDate(new Date()),
+        reservationedate = $('#reservationedate').val() ? $('#reservationedate').val() : formatDate(new Date()),
         reservationtime = $('#reservationtime').val() ? $('#reservationtime').val() + ':00' : '00:00:00',
         endtime = $('#endtime').val() ? $('#endtime').val() + ':59' : '23:59:59';
 
-    $.post('php/getjonkerdaily.php', {startDate: reservationdate + " " + reservationtime, endDate: reservationdate + " " + endtime}, function(data){
+    $.post('php/getjonkerdaily.php', {startDate: reservationdate + " " + reservationtime, endDate: reservationedate + " " + endtime}, function(data){
       var obj = JSON.parse(data);
 
       if(obj.status === 'success'){
@@ -764,7 +777,7 @@ $(function () {
     }
   });
 
-  $.post('php/getjonkerdaily.php', {startDate: $('#reservationdate').val() + " " + $('#reservationtime').val() + ':00', endDate: $('#reservationdate').val() + " " + $('#endtime').val() + ':59'}, function(data){
+  $.post('php/getjonkerdaily.php', {startDate: $('#reservationdate').val() + " " + $('#reservationtime').val() + ':00', endDate: $('#reservationedate').val() + " " + $('#endtime').val() + ':59'}, function(data){
     var obj = JSON.parse(data);
 
     if(obj.status === 'success'){

@@ -44,9 +44,9 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
             $ent4Count = 0;
             
             while ($row = $result->fetch_assoc()) {
-                if(!in_array(substr($row['Date'], 10, 3), $dateBar)){
+                if(!in_array(substr($row['Date'], 0, 10). ' ' . substr($row['Date'], 10, 3), $dateBar)){
                     $message[] = array( 
-                        'Date' => substr($row['Date'], 10, 3).":00",
+                        'Date' => substr($row['Date'], 0, 10). ' ' . substr($row['Date'], 10, 3).":00",
                         'Date2' => substr($row['Date'], 0, 10),
                         'ent1Count' => 0,
                         'ent2Count' => 0,
@@ -56,10 +56,10 @@ if(isset($_POST['startDate'], $_POST['endDate'])){
                         'total' => 0
                     );
 
-                    array_push($dateBar, substr($row['Date'], 10, 3));
+                    array_push($dateBar, substr($row['Date'], 0, 10). ' ' . substr($row['Date'], 10, 3));
                 }
 
-                $key = array_search(substr($row['Date'], 10, 3), $dateBar);
+                $key = array_search(substr($row['Date'], 0, 10). ' ' . substr($row['Date'], 10, 3), $dateBar);
 
                 if($row['Place'] == 'redhouse'){
                     if($row['Condition'] == 'PPL-in'){
